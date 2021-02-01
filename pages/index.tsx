@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import {connectToDatabase} from '../util/mongodb'
-import {GetStaticProps, GetStaticPaths, GetServerSideProps} from 'next'
 
 export default function Home({isConnected}) {
 	return (

@@ -31,7 +31,9 @@ module.exports = {
 	rules: {
 		// Disable prop-types as we use TypeScript for type checking
 		'react/prop-types': 'off',
-		'@typescript-eslint/explicit-function-return-type': 'off',
+		'@typescript-eslint/explicit-function-return-type': [
+			{allowTypedFunctionExpressions: true},
+		],
 		'prettier/prettier': 'error',
 		'@typescript-eslint/interface-name-prefix': 'off',
 		'@typescript-eslint/no-explicit-any': 'off',
