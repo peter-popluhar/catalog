@@ -1,38 +1,42 @@
+import Link from 'next/link'
 import Image from 'next/image'
 import styles from './media-object.module.scss'
 import label from './../../styles-modules/label.module.scss'
 import btn from './../../styles-modules/buttons.module.scss'
+import {MediaObjectType} from './../../types/media-object-type'
 
-export default function MediaObject() {
+type Props = {
+	data: MediaObjectType
+}
+
+export default function MediaObject({data}: Props) {
+	const {_id, labelContent, name, flags, description, price} = data
 	return (
-		<article className={styles.mediaObject}>
-			<div className={styles.img}>
-				<Image
-					alt='product name'
-					src='/150.png'
-					layout='intrinsic'
-					width={320}
-					height={200}
-				/>
-			</div>
+		<Link href={`/items/${_id}`}>
+			<a className={styles.link}>
+				<article className={styles.mediaObject}>
+					<div className={styles.img}>
+						<Image
+							alt={name}
+							src='/150.png'
+							layout='intrinsic'
+							width={320}
+							height={200}
+						/>
+					</div>
 
-			<div className={styles.info}>
-				<span className={`strong ${label.label}`}>TOP 17</span>
-				<h2 className='text--md'>Apple iPhone 12 Pro 128GB</h2>
-				<p className={`text--sm ${styles.flags}`}>
-					phone, touch screen, IOS, 256GB
-				</p>
-				<p className='text--sm text--overflow'>
-					Teams is probably number “not-on-the-list”. But it turns out that
-					making your app accessible where your users are already working has
-					some profound benefits. In this article, we’ll look at how Teams makes
-					web
-				</p>
-			</div>
-			<div className={styles.action}>
-				<p className='text--md strong nbsp'>36 990 Kč</p>
-				<button className={`${btn.btnAction}`}>Edit</button>
-			</div>
-		</article>
+					<div className={styles.info}>
+						<span className={`strong ${label.label}`}>{labelContent}</span>
+						<h2 className='text--md'>{name}</h2>
+						<p className={`text--sm ${styles.flags}`}>{flags}</p>
+						<p className='text--sm text--overflow'>{description}</p>
+					</div>
+					<div className={styles.action}>
+						<p className='text--md strong nbsp'>{price}</p>
+						<button className={`${btn.btnAction} ${btn.btnLg}`}>Edit</button>
+					</div>
+				</article>
+			</a>
+		</Link>
 	)
 }
