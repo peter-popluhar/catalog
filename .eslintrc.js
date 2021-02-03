@@ -29,9 +29,12 @@ module.exports = {
 		sourceType: 'module',
 	},
 	rules: {
+		// disable the rule for all files
+		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		// Disable prop-types as we use TypeScript for type checking
 		'react/prop-types': 'off',
 		'@typescript-eslint/explicit-function-return-type': [
+			'off',
 			{allowTypedFunctionExpressions: true},
 		],
 		'prettier/prettier': 'error',
