@@ -21,7 +21,7 @@ export default function Header({children}: Props) {
 
 				{children}
 				<div>
-					<button className={` ${btn.btn} ${btn.btnPrimary}`}>Login</button>
+					<button className={`${btn.btnPrimary}`}>Login</button>
 				</div>
 			</div>
 		</header>

@@ -36,11 +36,39 @@
 .btnPrimary {
 	composes: btn;
 	color: var(--color-text);
-	border: 2px solid rgba(102, 109, 233, 0.5);
+	border: 2px solid #ee671f;
 	background-color: transparent;
 
 	&:hover {
-		background-color: var(--color-calmdown);
+		background-color: var(--color-sunset);
+		background-image: linear-gradient(
+			0deg,
+			rgba(0, 0, 0, 0.1) 0%,
+			rgba(0, 0, 0, 0) 100%
+		);
+		color: #fff;
+	}
+
+	&:active {
+		background-color: var(--color-sunset);
+		background-image: linear-gradient(
+			0deg,
+			rgba(0, 0, 0, 0) 0%,
+			rgba(0, 0, 0, 0.15) 100%
+		);
+		box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+		color: #fff;
+	}
+}
+
+.btnAction {
+	composes: btn;
+	color: #fff;
+	// border: 2px solid rgba(102, 109, 233, 0.5);
+	background-color: var(--color-sunset);
+
+	&:hover {
+		background-color: #ee671f;
 		background-image: linear-gradient(
 			0deg,
 			rgba(0, 0, 0, 0.1) 0%,
@@ -59,4 +87,9 @@
 		box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.15);
 		color: #fff;
 	}
+}
+
+.btnLg {
+	@include fontSize(16);
+	padding: 11px 24px;
 }

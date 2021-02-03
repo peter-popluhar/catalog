@@ -71,7 +71,8 @@ p,
 }
 
 b,
-strong {
+strong,
+.strong {
 	font-weight: bold;
 }
 
@@ -97,4 +98,16 @@ a {
 		bottom: -1px;
 		left: 0;
 	}
+}
+
+.nbsp {
+	white-space: pre;
+}
+
+.text--overflow {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	overflow-wrap: anywhere;
 }

@@ -1,7 +1,7 @@
 export default function Navigation() {
 	return (
 		<nav>
-			<ul></ul>
+			<ul>nav</ul>
 		</nav>
 	)
 }

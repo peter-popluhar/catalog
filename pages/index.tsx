@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import {connectToDatabase} from '../util/mongodb'
+import MediaObject from './../components/media-object'
 
 export default function Home({isConnected}) {
 	return (
@@ -9,7 +10,10 @@ export default function Home({isConnected}) {
 				{/* <link rel='icon' href='/favicon.ico' /> */}
 			</Head>
 			<main>
-				<p>content</p>
+				<h1>Catalog</h1>
+				<section>
+					<MediaObject />
+				</section>
 			</main>
 		</>
 	)
