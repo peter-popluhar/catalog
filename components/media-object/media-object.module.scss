@@ -8,7 +8,12 @@
 	cursor: pointer;
 
 	@include md {
+		padding-top: 1rem;
+	}
+
+	@include lg {
 		display: flex;
+		padding-top: 0;
 	}
 
 	&:hover {
@@ -27,7 +32,7 @@
 .img {
 	text-align: center;
 
-	@include md {
+	@include lg {
 		flex: 0 0 150px;
 		align-self: center;
 		padding-left: 1rem;

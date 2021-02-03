@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import {connectToDatabase} from '../util/mongodb'
 import MediaObject from './../components/media-object'
+import grid from './../styles-modules/grid.module.scss'
 
 export default function Home({isConnected}) {
 	return (
@@ -11,7 +12,16 @@ export default function Home({isConnected}) {
 			</Head>
 			<main>
 				<h1>Catalog</h1>
-				<section>
+				<section className={grid.grid}>
+					<MediaObject />
+					<MediaObject />
+					<MediaObject />
+					<MediaObject />
+					<MediaObject />
+					<MediaObject />
+					<MediaObject />
+					<MediaObject />
+					<MediaObject />
 					<MediaObject />
 				</section>
 			</main>
