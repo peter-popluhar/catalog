@@ -31,7 +31,7 @@ export default function MediaObject() {
 			</div>
 			<div className={styles.action}>
 				<p className='text--md strong nbsp'>36 990 Kč</p>
-				<button className={`${btn.btnAction} ${btn.btnLg}`}>Edit</button>
+				<button className={`${btn.btnAction}`}>Edit</button>
 			</div>
 		</article>
 	)

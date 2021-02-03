@@ -1,3 +1,5 @@
+import footer from './footer.module.scss'
+
 export default function Footer() {
-	return <p>Footer</p>
+	return <footer className={footer.footer}>Copyright © 2007–2021</footer>
 }
