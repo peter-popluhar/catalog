@@ -1,16 +1,7 @@
 import {connectToDatabase} from '../../util/mongodb'
+import {isEmptyFieldValidator} from './../../util/empty-field-validator'
 
 const {MONGO_DB_COLLECTION} = process.env
-
-function isEmptyString(obj) {
-	for (const key in obj) {
-		if (obj[key] === '') {
-			return true
-		}
-	}
-
-	return false
-}
 
 export default async function Add(req, res) {
 	const data = req.body
@@ -21,7 +12,7 @@ export default async function Add(req, res) {
 		return
 	}
 
-	if (isEmptyString(data)) {
+	if (isEmptyFieldValidator(data)) {
 		res.setHeader('Allow', ['POST'])
 		res.status(203).end(`Non-Authoritative Information`)
 		return
