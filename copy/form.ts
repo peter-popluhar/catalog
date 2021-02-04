@@ -1,6 +1,5 @@
 export const formCopy = {
 	en: {
-		title: 'Add item to catalog',
 		language: 'English',
 		productName: 'Product Name',
 		productLabel: 'Product Label',
@@ -10,9 +9,9 @@ export const formCopy = {
 		addBtn: 'add item',
 		updateBtn: 'update',
 		deleteBtn: 'delete',
+		error: 'all fields must be filled !!!',
 	},
 	sw: {
-		title: 'Ongeza bidhaa kwenye katalogi',
 		language: 'Swahili',
 		productName: 'Jina la bidhaa',
 		productLabel: 'Lebo ya Bidhaa',
@@ -22,5 +21,6 @@ export const formCopy = {
 		addBtn: 'ongeza kipengee',
 		updateBtn: 'sasisha',
 		deleteBtn: 'futa',
+		error: 'uwanja wote lazima ujazwe !!!',
 	},
 }

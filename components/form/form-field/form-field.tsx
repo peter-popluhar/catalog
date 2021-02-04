@@ -9,6 +9,7 @@ type Props = {
 	defaultValue: string | number
 	name: string
 	hasFocus?: boolean
+	currency?: string
 }
 
 export default function FormField({
@@ -17,6 +18,7 @@ export default function FormField({
 	defaultValue,
 	name,
 	hasFocus,
+	currency,
 }: Props) {
 	const inputFocus = useRef<HTMLInputElement | null>()
 
@@ -38,14 +40,22 @@ export default function FormField({
 						defaultValue={defaultValue}
 					></textarea>
 				) : (
-					<input
-						type={inputType}
-						name={name}
-						className={input.input}
-						required
-						ref={hasFocus && inputFocus}
-						defaultValue={defaultValue}
-					/>
+					<>
+						<input
+							type={inputType}
+							name={name}
+							className={input.input}
+							required
+							ref={hasFocus && inputFocus}
+							defaultValue={defaultValue}
+						/>
+
+						{currency && (
+							<span className={`text--sm ${formLabel.formLabel}`}>
+								{currency}
+							</span>
+						)}
+					</>
 				)}
 			</label>
 		</div>

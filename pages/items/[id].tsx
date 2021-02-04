@@ -2,10 +2,14 @@ import {connectToDatabase} from '../../util/mongodb'
 import {ObjectID} from 'mongodb'
 import MastHead from './../../components/masthead'
 import Form from './../../components/form'
+import {itemCopy} from '../../copy/items'
 
 const {MONGO_DB_COLLECTION} = process.env
 
 export default function Item({data}) {
+	const lng = 'en'
+	const lngPath = itemCopy?.[lng]
+
 	if (!data) {
 		return (
 			<MastHead title='We are sorry, but this Item Doesnt exists anymore!' />
@@ -16,7 +20,7 @@ export default function Item({data}) {
 
 	return (
 		<>
-			<MastHead title={` Editing: ${name}`} />
+			<MastHead title={` ${lngPath.title}: ${name}`} />
 			<Form data={data} isEditable />
 		</>
 	)

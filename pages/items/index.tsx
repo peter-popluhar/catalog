@@ -4,6 +4,7 @@ import grid from './../../components/global/grid.module.scss'
 import {MediaObjectsType} from './../../types/media-object-type'
 import MastHead from './../../components/masthead'
 const {MONGO_DB_COLLECTION} = process.env
+import {itemsCopy} from '../../copy/items'
 
 type Props = {
 	isConnected: any
@@ -11,11 +12,14 @@ type Props = {
 }
 
 export default function Home({isConnected, items}: Props) {
+	const lng = 'en'
+	const lngPath = itemsCopy?.[lng]
+
 	if (!isConnected) {
 		return (
 			<MastHead
-				title='There was a problem with database connection.'
-				subtitle='Please try again later, or contact your administrator.'
+				title={lngPath.notConnected.title}
+				subtitle={lngPath.notConnected.subTitle}
 			/>
 		)
 	}
@@ -23,15 +27,15 @@ export default function Home({isConnected, items}: Props) {
 	if (items.length < 1) {
 		return (
 			<MastHead
-				title='Looks like there are not any items yet.'
-				subtitle={`Please go to Add item page!`}
+				title={lngPath.notItems.title}
+				subtitle={lngPath.notItems.subTitle}
 			/>
 		)
 	}
 
 	return (
 		<main>
-			<MastHead title='Catalog' />
+			<MastHead title={lngPath.title} />
 			<section className={grid.grid}>
 				{items.map((item) => (
 					<MediaObject data={item} key={item._id} />

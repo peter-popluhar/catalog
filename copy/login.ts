@@ -1,8 +1,8 @@
 export const loginCopy = {
 	en: {
-		copyright: 'Login',
+		title: 'Login',
 	},
 	sw: {
-		copyright: 'Ingia',
+		title: 'Ingia',
 	},
 }

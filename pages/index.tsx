@@ -1,9 +1,12 @@
 import MastHead from './../components/masthead'
+import {loginCopy} from './../copy/login'
 
 export default function Home() {
+	const lng = 'en'
+	const lngPath = loginCopy?.[lng]
 	return (
 		<main>
-			<MastHead title='Login' />
+			<MastHead title={lngPath.title} />
 		</main>
 	)
 }
