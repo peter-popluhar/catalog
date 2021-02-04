@@ -1,0 +1,26 @@
+export const formCopy = {
+	en: {
+		title: 'Add item to catalog',
+		language: 'English',
+		productName: 'Product Name',
+		productLabel: 'Product Label',
+		productCategories: 'Product Categories',
+		productDescription: 'Product Description',
+		currency: 'eur',
+		addBtn: 'add item',
+		updateBtn: 'update',
+		deleteBtn: 'delete',
+	},
+	sw: {
+		title: 'Ongeza bidhaa kwenye katalogi',
+		language: 'Swahili',
+		productName: 'Jina la bidhaa',
+		productLabel: 'Lebo ya Bidhaa',
+		productCategories: 'Jamii Jamii',
+		productDescription: 'Maelezo ya bidhaa',
+		currency: 'TSh',
+		addBtn: 'ongeza kipengee',
+		updateBtn: 'sasisha',
+		deleteBtn: 'futa',
+	},
+}

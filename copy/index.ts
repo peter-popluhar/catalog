@@ -1,0 +1,6 @@
+export {navigationCopy} from './navigation'
+export {footerCopy} from './footer'
+export {loginCopy} from './login'
+export {listCopy} from './list'
+export {addCopy} from './add'
+export {formCopy} from './form'
