@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Form from './../components/form'
+import MastHead from './../components/masthead'
 
 export default function Add() {
 	return (
@@ -8,7 +9,7 @@ export default function Add() {
 				<title>Add Item</title>
 			</Head>
 			<main>
-				<h1>Add item to catalog</h1>
+				<MastHead title='Add item to catalog' />
 				<Form />
 			</main>
 		</>

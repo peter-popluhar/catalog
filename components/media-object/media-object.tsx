@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './media-object.module.scss'
-import label from './../../styles-modules/label.module.scss'
-import btn from './../../styles-modules/buttons.module.scss'
+import flag from './../global/flag.module.scss'
+import btn from './../global/buttons.module.scss'
 import {MediaObjectType} from './../../types/media-object-type'
 
 type Props = {
@@ -26,7 +26,7 @@ export default function MediaObject({data}: Props) {
 					</div>
 
 					<div className={styles.info}>
-						<span className={`strong ${label.label}`}>{labelContent}</span>
+						<span className={`strong ${flag.flag}`}>{labelContent}</span>
 						<h2 className='text--md'>{name}</h2>
 						<p className={`text--sm ${styles.flags}`}>{flags}</p>
 						<p className='text--sm text--overflow'>{description}</p>

@@ -1,7 +1,9 @@
+import MastHead from './../components/masthead'
+
 export default function Home() {
 	return (
 		<main>
-			<h1>Login</h1>
+			<MastHead title='Login' />
 		</main>
 	)
 }

@@ -1,0 +1,11 @@
+@import './../../styles/media-queries.scss';
+
+.wrapper {
+	width: 100%;
+	background-color: #fff;
+	padding: 1rem;
+
+	@include md {
+		padding: 2rem;
+	}
+}
