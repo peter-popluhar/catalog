@@ -14,7 +14,7 @@ type Props = {
 export default function MediaObject({data}: Props) {
 	const {lng} = useLanguageContext()
 	const lngPath = mediaObjectCopy?.[lng]
-
+	const currency = lng === 'en' ? 'EUR' : 'TSH'
 	const {_id, labelContent, name, categories, description, price} = data
 	return (
 		<Link href={`/items/${_id}`}>
@@ -37,7 +37,9 @@ export default function MediaObject({data}: Props) {
 						<p className='text--sm text--overflow'>{description}</p>
 					</div>
 					<div className={styles.action}>
-						<p className='text--md strong nbsp'>{price}</p>
+						<p className='text--md strong nbsp'>
+							{price} {currency}
+						</p>
 						<button className={`${btn.btnAction} ${btn.btnLg}`}>
 							{lngPath.editBtn}
 						</button>

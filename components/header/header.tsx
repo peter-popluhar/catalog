@@ -6,17 +6,14 @@ import container from './../global/container.module.scss'
 import btn from './../global/buttons.module.scss'
 import {navigationCopy} from './../../copy/navigation'
 import {useLanguageContext} from './../../context/language-context'
+import LanguageSwitcher from './../language-switcher'
 
 type Props = {
 	children: ReactNode
 }
 
 export default function Header({children}: Props) {
-	const {setLanguage, lng} = useLanguageContext()
-
-	const handleLanguage = () => {
-		setLanguage(lng === 'en' ? 'sw' : 'en')
-	}
+	const {lng} = useLanguageContext()
 
 	const copyPath = navigationCopy?.[lng]
 
@@ -25,12 +22,12 @@ export default function Header({children}: Props) {
 			<div className={` ${container.container} ${header.wrapper}`}>
 				<Logo />
 				{children}
-				<button onClick={handleLanguage}>Language</button>
-				<div>
-					<Link href='/'>
-						<a className={btn.btnPrimary}>{copyPath.login}</a>
-					</Link>
-				</div>
+
+				<Link href='/'>
+					<a className={btn.btnPrimary}>{copyPath.login}</a>
+				</Link>
+
+				<LanguageSwitcher />
 			</div>
 		</header>
 	)

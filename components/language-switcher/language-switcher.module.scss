@@ -1,0 +1,22 @@
+.wrapper {
+	display: flex;
+	height: 36px;
+	margin-left: 1rem;
+}
+
+.flag {
+	width: 36px;
+	height: 100%;
+	margin-left: 1rem;
+	opacity: 0.5;
+	transition: all 0.5s;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.active {
+	opacity: 1;
+}
