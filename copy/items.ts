@@ -27,8 +27,10 @@ export const itemsCopy = {
 export const itemCopy = {
 	en: {
 		title: 'editing',
+		notExists: 'We are sorry, but this Item Doesnt exists anymore!',
 	},
 	sw: {
 		title: 'kuhariri',
-	}
+		notExists: 'Samahani, lakini kipengee hiki hakipo tena!',
+	},
 }

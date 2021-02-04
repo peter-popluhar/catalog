@@ -1,8 +1,9 @@
 import {footerCopy} from './../../copy/footer'
 import footer from './footer.module.scss'
+import {useLanguageContext} from './../../context/language-context'
 
 export default function Footer() {
-	const lng = 'en'
+	const {lng} = useLanguageContext()
 	const lngPath = footerCopy?.[lng]
 
 	return (

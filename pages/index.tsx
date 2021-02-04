@@ -1,9 +1,11 @@
 import MastHead from './../components/masthead'
 import {loginCopy} from './../copy/login'
+import {useLanguageContext} from './../context/language-context'
 
 export default function Home() {
-	const lng = 'en'
+	const {lng} = useLanguageContext()
 	const lngPath = loginCopy?.[lng]
+
 	return (
 		<main>
 			<MastHead title={lngPath.title} />

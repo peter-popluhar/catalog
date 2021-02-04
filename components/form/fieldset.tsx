@@ -7,9 +7,10 @@ type Props = {
 	data?: MediaObjectType
 	isEditable?: boolean
 	lng: string
+	focus?: boolean
 }
 
-export default function Fieldset({data, lng}: Props) {
+export default function Fieldset({data, lng, focus}: Props) {
 	const lngPath = formCopy?.[lng]
 
 	return (
@@ -20,7 +21,7 @@ export default function Fieldset({data, lng}: Props) {
 				inputType='text'
 				name='name'
 				defaultValue={data ? data.name : ''}
-				hasFocus
+				hasFocus={focus}
 			/>
 
 			<FormField

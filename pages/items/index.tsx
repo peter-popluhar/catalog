@@ -5,6 +5,7 @@ import {MediaObjectsType} from './../../types/media-object-type'
 import MastHead from './../../components/masthead'
 const {MONGO_DB_COLLECTION} = process.env
 import {itemsCopy} from '../../copy/items'
+import {useLanguageContext} from './../../context/language-context'
 
 type Props = {
 	isConnected: any
@@ -12,7 +13,7 @@ type Props = {
 }
 
 export default function Home({isConnected, items}: Props) {
-	const lng = 'en'
+	const {lng} = useLanguageContext()
 	const lngPath = itemsCopy?.[lng]
 
 	if (!isConnected) {

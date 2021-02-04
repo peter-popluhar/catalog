@@ -9,7 +9,6 @@ type Props = {
 }
 
 export default function Layout({children}: Props) {
-	console.log(1)
 	return (
 		<>
 			<Header>

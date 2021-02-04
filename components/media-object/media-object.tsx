@@ -4,12 +4,17 @@ import styles from './media-object.module.scss'
 import flag from './../global/flag.module.scss'
 import btn from './../global/buttons.module.scss'
 import {MediaObjectType} from './../../types/media-object-type'
+import {mediaObjectCopy} from './../../copy/media-object'
+import {useLanguageContext} from './../../context/language-context'
 
 type Props = {
 	data: MediaObjectType
 }
 
 export default function MediaObject({data}: Props) {
+	const {lng} = useLanguageContext()
+	const lngPath = mediaObjectCopy?.[lng]
+
 	const {_id, labelContent, name, categories, description, price} = data
 	return (
 		<Link href={`/items/${_id}`}>
@@ -33,7 +38,9 @@ export default function MediaObject({data}: Props) {
 					</div>
 					<div className={styles.action}>
 						<p className='text--md strong nbsp'>{price}</p>
-						<button className={`${btn.btnAction} ${btn.btnLg}`}>Edit</button>
+						<button className={`${btn.btnAction} ${btn.btnLg}`}>
+							{lngPath.editBtn}
+						</button>
 					</div>
 				</article>
 			</a>

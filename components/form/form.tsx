@@ -17,7 +17,7 @@ export default function Form({data, isEditable}: Props) {
 		<div className={styles.wrapper}>
 			<form ref={form}>
 				<div className={grid.grid}>
-					<Fieldset data={data} lng='en' />
+					<Fieldset data={data} lng='en' focus />
 					<Fieldset data={data} lng='sw' />
 				</div>
 
