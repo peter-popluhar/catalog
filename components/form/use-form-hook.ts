@@ -11,7 +11,6 @@ export function useFormHook(formRef) {
 	const router = useRouter()
 	const [btnDisabled, setBtnDisabled] = useState<boolean>(false)
 	const [error, setError] = useState<boolean>(false)
-	const [, setData] = useState([])
 
 	const addItem = (e: {preventDefault: () => void}) => {
 		e.preventDefault()
@@ -34,8 +33,7 @@ export function useFormHook(formRef) {
 					formRef.current.reset()
 					setBtnDisabled(false)
 					setError(false)
-					res.json().then((data) => {
-						setData(data)
+					res.json().then(() => {
 						router.push('/items')
 					})
 				}
@@ -65,8 +63,6 @@ export function useFormHook(formRef) {
 					setBtnDisabled(false)
 					setError(false)
 					res.json().then((id) => {
-						setData(id)
-						console.log(id)
 						router.push(`/items/${id}`)
 					})
 				}

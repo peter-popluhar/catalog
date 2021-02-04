@@ -47,7 +47,11 @@ export async function getServerSideProps() {
 	const isConnected = await client.isConnected()
 
 	try {
-		items = await db.collection(MONGO_DB_COLLECTION).find({}).toArray()
+		items = await db
+			.collection(MONGO_DB_COLLECTION)
+			.find({})
+			.sort({_id: -1})
+			.toArray()
 	} catch (e) {
 		console.log(e)
 	}
