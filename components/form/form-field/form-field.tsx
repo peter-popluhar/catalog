@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from 'react'
 import formField from './form-field.module.scss'
 import formLabel from './form-label.module.scss'
 import input from './input.module.scss'
+import cslx from 'clsx'
 
 type Props = {
 	label: string
@@ -40,7 +41,7 @@ export default function FormField({
 						defaultValue={defaultValue}
 					></textarea>
 				) : (
-					<>
+					<div className={cslx(currency && formField.hasCurrency)}>
 						<input
 							type={inputType}
 							name={name}
@@ -52,10 +53,10 @@ export default function FormField({
 
 						{currency && (
 							<span className={`text--sm ${formLabel.formLabel}`}>
-								{currency}
+								<span className={formField.currency}>{currency}</span>
 							</span>
 						)}
-					</>
+					</div>
 				)}
 			</label>
 		</div>
