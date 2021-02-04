@@ -2,7 +2,7 @@ export type MediaObjectType = {
 	_id: string
 	labelContent: string
 	name: string
-	flags: string
+	categories: string
 	description: string
 	price: number
 }

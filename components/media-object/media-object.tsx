@@ -10,7 +10,7 @@ type Props = {
 }
 
 export default function MediaObject({data}: Props) {
-	const {_id, labelContent, name, flags, description, price} = data
+	const {_id, labelContent, name, categories, description, price} = data
 	return (
 		<Link href={`/items/${_id}`}>
 			<a className={styles.link}>
@@ -28,7 +28,7 @@ export default function MediaObject({data}: Props) {
 					<div className={styles.info}>
 						<span className={`strong ${flag.flag}`}>{labelContent}</span>
 						<h2 className='text--md'>{name}</h2>
-						<p className={`text--sm ${styles.flags}`}>{flags}</p>
+						<p className={`text--sm ${styles.categories}`}>{categories}</p>
 						<p className='text--sm text--overflow'>{description}</p>
 					</div>
 					<div className={styles.action}>

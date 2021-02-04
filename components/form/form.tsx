@@ -6,8 +6,14 @@ import label from './../global/label.module.scss'
 import field from './../global/field.module.scss'
 import btn from './../global/buttons.module.scss'
 import grid from './../global/grid.module.scss'
+import {MediaObjectType} from './../../types/media-object-type'
 
-export default function Form({data, isEditable}) {
+type Props = {
+	data: MediaObjectType
+	isEditable?: boolean
+}
+
+export default function Form({data, isEditable}: Props) {
 	const form = useRef<HTMLFormElement | null>()
 	const inputFocus = useRef<HTMLInputElement | null>()
 	const {addItem, btnDisabled, error, updateItem, deleteItem} = useFormHook(
