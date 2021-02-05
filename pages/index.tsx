@@ -1,9 +1,9 @@
 import MastHead from './../components/masthead'
 import {loginCopy} from './../copy/login'
-import {useLanguageContext} from './../context/language-context'
+import {useSettingsContext} from './../context/settings-context'
 
 export default function Home() {
-	const {lng} = useLanguageContext()
+	const {lng} = useSettingsContext()
 	const lngPath = loginCopy?.[lng]
 
 	return (

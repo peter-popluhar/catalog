@@ -5,7 +5,8 @@ import {MediaObjectsType} from './../../types/media-object-type'
 import MastHead from './../../components/masthead'
 const {MONGO_DB_COLLECTION} = process.env
 import {itemsCopy} from '../../copy/items'
-import {useLanguageContext} from './../../context/language-context'
+import {useSettingsContext} from './../../context/settings-context'
+import cslx from 'clsx'
 
 type Props = {
 	isConnected: any
@@ -13,7 +14,7 @@ type Props = {
 }
 
 export default function Home({isConnected, items}: Props) {
-	const {lng} = useLanguageContext()
+	const {lng, layout} = useSettingsContext()
 	const lngPath = itemsCopy?.[lng]
 
 	if (!isConnected) {
@@ -37,7 +38,7 @@ export default function Home({isConnected, items}: Props) {
 	return (
 		<main>
 			<MastHead title={lngPath.title} />
-			<section className={grid.grid}>
+			<section className={cslx(grid.grid, layout === 'list' && grid.gridList)}>
 				{items.map((item) => (
 					<MediaObject data={item} key={item._id} />
 				))}

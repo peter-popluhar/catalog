@@ -18,9 +18,19 @@ Custom CSS properties
 	--color-canvas-dark: #f3f4f5;
 	--color-brand: #31abd5;
 	--color-sunset: #ff7a04;
+	--color-sunset-light: #ee671f;
 	--color-error: #fd2512;
-
+	--color-settings-border: #d9d9d9;
 	--raised-canvas: 0 2px 12px rgba(0, 0, 0, 0.08);
 
 	--default-transition-time: 0.4s;
+}
+
+.dark {
+	--color-canvas: #717578;
+	--color-text: #fff;
+	--color-calmdown: var(--color-text);
+	--color-sunset-light: var(--color-text);
+
+	background-color: #d2d6dc;
 }

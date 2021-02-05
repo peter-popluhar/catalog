@@ -2,7 +2,7 @@
 
 .wrapper {
 	width: 100%;
-	background-color: #fff;
+	background-color: var(--color-canvas);
 	padding: 1rem;
 
 	@include md {
@@ -11,5 +11,6 @@
 
 	legend {
 		margin-bottom: 1rem;
+		color: var(--color-text);
 	}
 }

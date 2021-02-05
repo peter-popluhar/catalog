@@ -3,7 +3,7 @@ import {useFormHook} from '../use-form-hook'
 import btn from './../../global/buttons.module.scss'
 import buttons from './buttons.module.scss'
 import {formCopy} from './../../../copy/form'
-import {useLanguageContext} from './../../../context/language-context'
+import {useSettingsContext} from './../../../context/settings-context'
 
 type Props = {
 	form: MutableRefObject<HTMLFormElement>
@@ -15,7 +15,7 @@ export default function Buttons({form, isEditable, id}: Props) {
 	const {addItem, btnDisabled, error, updateItem, deleteItem} = useFormHook(
 		form
 	)
-	const {lng} = useLanguageContext()
+	const {lng} = useSettingsContext()
 	const lngPath = formCopy?.[lng]
 
 	return (

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {navigationCopy} from './../../copy/navigation'
-import {useLanguageContext} from './../../context/language-context'
+import {useSettingsContext} from './../../context/settings-context'
 import styles from './navigation.module.scss'
 import {useRouter} from 'next/router'
 import cslx from 'clsx'
@@ -8,7 +8,7 @@ import cslx from 'clsx'
 export default function Navigation() {
 	const router = useRouter()
 	const pathname = router.pathname
-	const {lng} = useLanguageContext()
+	const {lng} = useSettingsContext()
 
 	const copyPath = navigationCopy?.[lng]
 

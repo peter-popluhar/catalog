@@ -3,12 +3,12 @@ import {ObjectID} from 'mongodb'
 import MastHead from './../../components/masthead'
 import Form from './../../components/form'
 import {itemCopy} from '../../copy/items'
-import {useLanguageContext} from './../../context/language-context'
+import {useSettingsContext} from './../../context/settings-context'
 
 const {MONGO_DB_COLLECTION} = process.env
 
 export default function Item({data}) {
-	const {lng} = useLanguageContext()
+	const {lng} = useSettingsContext()
 	const lngPath = itemCopy?.[lng]
 
 	if (!data) {

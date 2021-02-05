@@ -14,3 +14,9 @@
 		grid-template-columns: 1fr 1fr;
 	}
 }
+
+.gridList {
+	@include sm {
+		grid-template-columns: 1fr;
+	}
+}

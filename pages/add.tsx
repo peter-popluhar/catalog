@@ -2,10 +2,10 @@ import Head from 'next/head'
 import Form from './../components/form'
 import MastHead from './../components/masthead'
 import {addCopy} from './../copy/add'
-import {useLanguageContext} from './../context/language-context'
+import {useSettingsContext} from './../context/settings-context'
 
 export default function Add() {
-	const {lng} = useLanguageContext()
+	const {lng} = useSettingsContext()
 	const lngPath = addCopy?.[lng]
 
 	return (

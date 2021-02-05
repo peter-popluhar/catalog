@@ -36,7 +36,7 @@
 .btnPrimary {
 	composes: btn;
 	color: var(--color-text);
-	border: 2px solid #ee671f;
+	border: 2px solid var(--color-sunset-light);
 	background-color: transparent;
 
 	&:hover {
