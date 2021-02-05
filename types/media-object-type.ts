@@ -1,10 +1,15 @@
 export type MediaObjectType = {
 	_id: string
-	labelContent: string
-	name: string
-	categories: string
-	description: string
-	price: number
+	enLabelContent: string
+	enName: string
+	enCategories: string
+	enDescription: string
+	enPrice: number
+	swLabelContent: string
+	swName: string
+	swCategories: string
+	swDescription: string
+	swPrice: number
 }
 
 export type MediaObjectsType = MediaObjectType[]

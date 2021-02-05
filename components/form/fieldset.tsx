@@ -19,38 +19,44 @@ export default function Fieldset({data, lng, focus}: Props) {
 			<FormField
 				label={lngPath.productName}
 				inputType='text'
-				name='name'
-				defaultValue={data ? data.name : ''}
+				name={`${lng}Name`}
+				defaultValue={data ? (lng === 'en' ? data.enName : data.swName) : ''}
 				hasFocus={focus}
 			/>
 
 			<FormField
 				label={lngPath.productLabel}
 				inputType='text'
-				name='labelContent'
-				defaultValue={data ? data.labelContent : ''}
+				name={`${lng}LabelContent`}
+				defaultValue={
+					data ? (lng === 'en' ? data.enLabelContent : data.swLabelContent) : ''
+				}
 			/>
 
 			<FormField
 				label={lngPath.productCategories}
 				inputType='text'
-				name='categories'
-				defaultValue={data ? data.categories : ''}
+				name={`${lng}Categories`}
+				defaultValue={
+					data ? (lng === 'en' ? data.enCategories : data.swCategories) : ''
+				}
 			/>
 
 			<FormField
 				label={lngPath.productDescription}
 				inputType='area'
-				name='description'
-				defaultValue={data ? data.description : ''}
+				name={`${lng}Description`}
+				defaultValue={
+					data ? (lng === 'en' ? data.enDescription : data.swDescription) : ''
+				}
 			/>
 
 			<FormField
 				label='Product Price'
 				inputType='number'
-				name='price'
+				name={`${lng}Price`}
 				currency={lngPath.currency}
-				defaultValue={data ? data.price : ''}
+				defaultValue={data ? (lng === 'en' ? data.enPrice : data.swPrice) : ''}
 			/>
 		</fieldset>
 	)

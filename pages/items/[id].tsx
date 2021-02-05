@@ -15,7 +15,8 @@ export default function Item({data}) {
 		return <MastHead title={lngPath.notExists} />
 	}
 
-	const {name} = data
+	const {enName, swName} = data
+	const name = lng === 'en' ? enName : swName
 
 	return (
 		<>

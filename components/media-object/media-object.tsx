@@ -16,7 +16,26 @@ export default function MediaObject({data}: Props) {
 	const lngPath = mediaObjectCopy?.[lng]
 	const currency = lng === 'en' ? 'EUR' : 'TSH'
 
-	const {_id, labelContent, name, categories, description, price} = data
+	const {
+		_id,
+		enLabelContent,
+		enName,
+		enCategories,
+		enDescription,
+		enPrice,
+		swLabelContent,
+		swName,
+		swCategories,
+		swDescription,
+		swPrice,
+	} = data
+
+	const labelContent = lng === 'en' ? enLabelContent : swLabelContent
+	const name = lng === 'en' ? enName : swName
+	const categories = lng === 'en' ? enCategories : swCategories
+	const description = lng === 'en' ? enDescription : swDescription
+	const price = lng === 'en' ? enPrice : swPrice
+
 	return (
 		<Link href={`/items/${_id}`}>
 			<a className={styles.link}>
