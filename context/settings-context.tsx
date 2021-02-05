@@ -2,11 +2,17 @@ import React, {createContext, useContext, useState} from 'react'
 
 const SettingsContext = createContext({
 	theme: '',
-	setTheme: () => {},
+	setTheme: () => {
+		//
+	},
 	layout: '',
-	setLayout: () => {},
+	setLayout: () => {
+		//
+	},
 	lng: '',
-	setLanguage: () => {},
+	setLanguage: () => {
+		//
+	},
 })
 
 export const SettingsProvider = ({children}) => {
