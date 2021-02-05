@@ -7,7 +7,7 @@ import cslx from 'clsx'
 type Props = {
 	label: string
 	inputType: string
-	defaultValue: string | number
+	defaultValue?: string | number
 	name: string
 	hasFocus?: boolean
 	currency?: string

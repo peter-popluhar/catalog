@@ -6,7 +6,7 @@ import {formCopy} from '../../copy/form'
 type Props = {
 	data?: MediaObjectType
 	isEditable?: boolean
-	lng: string
+	lng?: string
 	focus?: boolean
 }
 
