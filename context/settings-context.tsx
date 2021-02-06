@@ -2,15 +2,15 @@ import React, {createContext, useContext, useState} from 'react'
 
 const SettingsContext = createContext({
 	theme: '',
-	setTheme: () => {
+	setTheme: (theme) => {
 		//
 	},
 	layout: '',
-	setLayout: () => {
+	setLayout: (layout) => {
 		//
 	},
 	lng: '',
-	setLanguage: () => {
+	setLanguage: (lng) => {
 		//
 	},
 })
