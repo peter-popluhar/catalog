@@ -6,6 +6,7 @@ export const settingsCopy = {
 		list: 'List',
 		light: 'Light',
 		dark: 'Dark',
+		greet: 'Hello',
 	},
 	sw: {
 		profile: 'Tazama Profaili',
@@ -14,5 +15,6 @@ export const settingsCopy = {
 		list: 'Orodha',
 		light: 'Mwanga',
 		dark: 'Giza',
+		greet: 'Halo',
 	},
 }

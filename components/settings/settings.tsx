@@ -38,7 +38,6 @@ export default function Settings() {
 	}
 
 	const handleClickOutside = (e) => {
-		console.log('clicking anywhere')
 		if (node.current.contains(e.target)) {
 			return
 		}
@@ -60,14 +59,17 @@ export default function Settings() {
 	return (
 		<>
 			<div className={styles.wrapper} ref={node}>
-				<button className={btn.btnProfile} onClick={handleListVisibility}>
+				<button
+					className={cslx(btn.btnProfile, pathname === '/login' && btn.Nouser)}
+					onClick={handleListVisibility}
+				>
 					{copyPath.profile}
 				</button>
 				<ul className={cslx(styles.list, open && styles.visible)}>
 					{pathname !== '/login' && (
 						<>
 							<li className={styles.item}>
-								<span className={styles.link}>Hello User</span>
+								<span className={styles.link}>{copyPath.greet} George</span>
 							</li>
 							<li className={styles.item}>
 								<button onClick={handleLogout} className={btn.btnLogout}>
