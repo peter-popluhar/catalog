@@ -2,8 +2,7 @@ import {useRef} from 'react'
 import MastHead from './../masthead'
 import {loginCopy} from './../../copy/login'
 import {useSettingsContext} from './../../context/settings-context'
-import styles from './../form/form.module.scss'
-import grid from './../global/grid.module.scss'
+import grid from './login.module.scss'
 import FormField from './../form/form-field'
 import LoginButton from './../form/buttons/login-button'
 
@@ -13,11 +12,11 @@ export default function Login() {
 	const lngPath = loginCopy?.[lng]
 
 	return (
-		<main>
+		<>
 			<MastHead title={lngPath.title} />
-			<div className={styles.wrapper}>
+			<div className={grid.grid}>
 				<form action='/api/login' method='post' ref={form}>
-					<div className={grid.grid}>
+					<div>
 						<fieldset>
 							<legend className='text--lg'>{lngPath.legend}</legend>
 							<FormField label={lngPath.user} inputType='text' name='name' />
@@ -31,6 +30,6 @@ export default function Login() {
 					<LoginButton form={form} />
 				</form>
 			</div>
-		</main>
+		</>
 	)
 }

@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import cslx from 'clsx'
-import Link from 'next/link'
 import styles from './settings.module.scss'
+import btn from './button.module.scss'
 import LanguageSwitcher from './../language-switcher'
 import LayoutSwitcher from '../layout-switcher'
 import ThemeSwitcher from './../theme-switcher'
@@ -20,26 +20,33 @@ export default function Settings() {
 		setVisile(!isVisible)
 	}
 
+	const handleLogout = (e) => {
+		e.preventDefault()
+
+		fetch('/api/logout', {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({}),
+		}).then((res) => {
+			if (res.status === 200) {
+				router.push('/login')
+			}
+		})
+	}
+
 	return (
 		<div className={styles.wrapper}>
-			<button className={styles.button} onClick={handleListVisibility}>
+			<button className={btn.btnProfile} onClick={handleListVisibility}>
 				{copyPath.profile}
 			</button>
 			<ul className={cslx(styles.list, isVisible && styles.visible)}>
 				<li className={styles.item}>
-					<Link href='/profile'>
-						<a href='' className={styles.link}>
-							Name
-							<span className='text--sm'>{copyPath.profile}</span>
-						</a>
-					</Link>
+					<span className={styles.link}>Hello User</span>
 				</li>
 				<li className={styles.item}>
-					<Link href='/logout'>
-						<a href='' className={styles.link}>
-							{copyPath.logout}
-						</a>
-					</Link>
+					<button onClick={handleLogout} className={btn.btnLogout}>
+						{copyPath.logout}
+					</button>
 				</li>
 				{pathname === '/items' && (
 					<li className={styles.item}>

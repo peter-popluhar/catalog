@@ -77,30 +77,3 @@
 		background-color: var(--color-sunset);
 	}
 }
-
-.button {
-	display: flex;
-	border: none;
-	border-radius: 50%;
-	padding: 0;
-	margin: 0;
-	width: 40px;
-	height: 40px;
-	text-decoration: none;
-	background: var(--color-calmdown) url(./../../public/photo.png) no-repeat
-		center center;
-	background-size: contain;
-	cursor: pointer;
-	text-indent: -999rem;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-
-	&:focus {
-		outline: none;
-	}
-
-	&:active {
-		transform: scale(0.99);
-		color: var(--color-calmdown);
-	}
-}
