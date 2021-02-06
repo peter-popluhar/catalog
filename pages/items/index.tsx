@@ -1,3 +1,4 @@
+import {withIronSession} from 'next-iron-session'
 import {connectToDatabase} from '../../util/mongodb'
 import MediaObject from './../../components/media-object'
 import grid from './../../components/global/grid.module.scss'
@@ -7,7 +8,7 @@ import {itemsCopy} from '../../copy/items'
 import {useSettingsContext} from './../../context/settings-context'
 import cslx from 'clsx'
 
-const {MONGO_DB_COLLECTION} = process.env
+const {MONGO_DB_COLLECTION, COOKIE_NAME} = process.env
 
 type Props = {
 	isConnected: any
@@ -48,22 +49,42 @@ export default function Home({isConnected, items}: Props) {
 	)
 }
 
-export async function getServerSideProps() {
-	let items = []
-	const {client, db} = await connectToDatabase()
-	const isConnected = await client.isConnected()
+export const getServerSideProps = withIronSession(
+	async ({req}) => {
+		const user = req.session.get('user')
 
-	try {
-		items = await db
-			.collection(MONGO_DB_COLLECTION)
-			.find({})
-			.sort({_id: -1})
-			.toArray()
-	} catch (e) {
-		console.log(e)
-	}
+		if (!user) {
+			return {
+				redirect: {
+					permanent: false,
+					destination: '/login',
+				},
+			}
+		}
 
-	return {
-		props: {isConnected, items: JSON.parse(JSON.stringify(items))},
+		let items = []
+		const {client, db} = await connectToDatabase()
+		const isConnected = await client.isConnected()
+
+		try {
+			items = await db
+				.collection(MONGO_DB_COLLECTION)
+				.find({})
+				.sort({_id: -1})
+				.toArray()
+		} catch (e) {
+			console.log(e)
+		}
+
+		return {
+			props: {isConnected, items: JSON.parse(JSON.stringify(items)), user},
+		}
+	},
+	{
+		cookieName: COOKIE_NAME,
+		cookieOptions: {
+			secure: process.env.NODE_ENV === 'production' ? true : false,
+		},
+		password: process.env.APPLICATION_SECRET,
 	}
-}
+)

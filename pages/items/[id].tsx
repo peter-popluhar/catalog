@@ -1,3 +1,4 @@
+import {withIronSession} from 'next-iron-session'
 import {connectToDatabase} from '../../util/mongodb'
 import {ObjectID} from 'mongodb'
 import MastHead from './../../components/masthead'
@@ -5,7 +6,7 @@ import Form from './../../components/form'
 import {itemCopy} from '../../copy/items'
 import {useSettingsContext} from './../../context/settings-context'
 
-const {MONGO_DB_COLLECTION} = process.env
+const {MONGO_DB_COLLECTION, COOKIE_NAME} = process.env
 
 export default function Item({data}) {
 	const {lng} = useSettingsContext()
@@ -26,13 +27,35 @@ export default function Item({data}) {
 	)
 }
 
-export async function getServerSideProps({query}) {
-	const {id} = query
-	const {db} = await connectToDatabase()
-	const objectId = await ObjectID(id)
-	const data = await db.collection(MONGO_DB_COLLECTION).findOne({_id: objectId})
+export const getServerSideProps = withIronSession(
+	async ({req, query}) => {
+		const user = req.session.get('user')
 
-	return {
-		props: {data: JSON.parse(JSON.stringify(data))},
+		if (!user) {
+			return {
+				redirect: {
+					permanent: false,
+					destination: '/login',
+				},
+			}
+		}
+
+		const {id} = query
+		const {db} = await connectToDatabase()
+		const objectId = await ObjectID(id)
+		const data = await db
+			.collection(MONGO_DB_COLLECTION)
+			.findOne({_id: objectId})
+
+		return {
+			props: {user, data: JSON.parse(JSON.stringify(data))},
+		}
+	},
+	{
+		cookieName: COOKIE_NAME,
+		cookieOptions: {
+			secure: process.env.NODE_ENV === 'production' ? true : false,
+		},
+		password: process.env.APPLICATION_SECRET,
 	}
-}
+)
