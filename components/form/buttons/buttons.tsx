@@ -16,11 +16,15 @@ export default function Buttons({form, isEditable, id}: Props) {
 			{isEditable ? (
 				<>
 					<input type='hidden' name='id' value={id} />
-					<UpdateButton form={form} id={id} />
+					<div>
+						<UpdateButton form={form} id={id} />
+					</div>
 					<DeleteButton form={null} id={id} />
 				</>
 			) : (
-				<AddButton form={form} />
+				<div>
+					<AddButton form={form} />
+				</div>
 			)}
 		</div>
 	)

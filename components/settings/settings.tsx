@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useRef, useEffect} from 'react'
 import cslx from 'clsx'
 import styles from './settings.module.scss'
 import btn from './button.module.scss'
@@ -8,16 +8,18 @@ import ThemeSwitcher from './../theme-switcher'
 import {useRouter} from 'next/router'
 import {useSettingsContext} from './../../context/settings-context'
 import {settingsCopy} from './../../copy/settings'
+import overlay from './overlay.module.scss'
 
 export default function Settings() {
-	const [isVisible, setVisile] = useState(false)
+	const [open, setOpen] = useState(false)
 	const router = useRouter()
 	const pathname = router.pathname
 	const {lng} = useSettingsContext()
 	const copyPath = settingsCopy?.[lng]
+	const node = useRef<HTMLDivElement | null>()
 
 	const handleListVisibility = () => {
-		setVisile(!isVisible)
+		setOpen(!open)
 	}
 
 	const handleLogout = (e) => {
@@ -32,36 +34,64 @@ export default function Settings() {
 				router.push('/login')
 			}
 		})
+		setOpen(false)
 	}
 
+	const handleClickOutside = (e) => {
+		console.log('clicking anywhere')
+		if (node.current.contains(e.target)) {
+			return
+		}
+		setOpen(false)
+	}
+
+	useEffect(() => {
+		if (open) {
+			document.addEventListener('mousedown', handleClickOutside)
+		} else {
+			document.removeEventListener('mousedown', handleClickOutside)
+		}
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside)
+		}
+	}, [open])
+
 	return (
-		<div className={styles.wrapper}>
-			<button className={btn.btnProfile} onClick={handleListVisibility}>
-				{copyPath.profile}
-			</button>
-			<ul className={cslx(styles.list, isVisible && styles.visible)}>
-				<li className={styles.item}>
-					<span className={styles.link}>Hello User</span>
-				</li>
-				<li className={styles.item}>
-					<button onClick={handleLogout} className={btn.btnLogout}>
-						{copyPath.logout}
-					</button>
-				</li>
-				{pathname === '/items' && (
+		<>
+			<div className={styles.wrapper} ref={node}>
+				<button className={btn.btnProfile} onClick={handleListVisibility}>
+					{copyPath.profile}
+				</button>
+				<ul className={cslx(styles.list, open && styles.visible)}>
+					{pathname !== '/login' && (
+						<>
+							<li className={styles.item}>
+								<span className={styles.link}>Hello User</span>
+							</li>
+							<li className={styles.item}>
+								<button onClick={handleLogout} className={btn.btnLogout}>
+									{copyPath.logout}
+								</button>
+							</li>
+						</>
+					)}
+					{pathname === '/items' && (
+						<li className={styles.item}>
+							<LayoutSwitcher />
+						</li>
+					)}
+
 					<li className={styles.item}>
-						<LayoutSwitcher />
+						<ThemeSwitcher />
 					</li>
-				)}
 
-				<li className={styles.item}>
-					<ThemeSwitcher />
-				</li>
-
-				<li className={styles.item}>
-					<LanguageSwitcher />
-				</li>
-			</ul>
-		</div>
+					<li className={styles.item}>
+						<LanguageSwitcher />
+					</li>
+				</ul>
+			</div>
+			<div className={cslx(overlay.overlay, open && overlay.isActive)} />
+		</>
 	)
 }

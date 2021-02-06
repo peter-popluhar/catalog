@@ -3,7 +3,7 @@
 
 .wrapper {
 	align-self: flex-start;
-	z-index: 3;
+	z-index: 5;
 	position: relative;
 	height: 60px;
 	display: flex;
@@ -32,7 +32,6 @@
 		right: 0;
 		width: 250px;
 		transform: translate(0, 0) scale(0.8);
-		transition: all 0.2s ease-in;
 		opacity: 0;
 	}
 }

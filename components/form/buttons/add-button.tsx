@@ -9,7 +9,7 @@ type Props = {
 }
 
 export default function AddButton({form}: Props) {
-	const {handleForm, btnDisabled, isError} = useFormHook(
+	const {handleForm, btnDisabled, isError, errorMsg} = useFormHook(
 		form,
 		'/api/add',
 		'POST',
@@ -20,7 +20,7 @@ export default function AddButton({form}: Props) {
 
 	return (
 		<>
-			{isError && <p>{lngPath.error}</p>}
+			{isError && <p>{errorMsg}</p>}
 			<input
 				type='submit'
 				tabIndex={0}
