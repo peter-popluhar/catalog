@@ -6,7 +6,7 @@ import grid from './login.module.scss'
 import FormField from './../form/form-field'
 import LoginButton from './../form/buttons/login-button'
 
-export default function Login() {
+export default function LoginContent() {
 	const form = useRef<HTMLFormElement | null>()
 	const {lng} = useSettingsContext()
 	const lngPath = loginCopy?.[lng]

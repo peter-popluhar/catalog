@@ -1,15 +1,9 @@
-import Login from './../components/login'
+import LoginContent from './../components/login'
 
-export default function Home() {
+export default function Login() {
 	return (
 		<main>
-			<Login />
+			<LoginContent />
 		</main>
 	)
-}
-
-export async function getServerSideProps() {
-	return {
-		props: {},
-	}
 }
