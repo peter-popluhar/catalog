@@ -1,5 +1,5 @@
 import {MutableRefObject} from 'react'
-import {useFormHook} from '../use-form-hook'
+import {useFormHook} from './../../../hooks/use-form-hook'
 import btn from './../../global/buttons.module.scss'
 import {formCopy} from '../../../copy/form'
 import {useSettingsContext} from '../../../context/settings-context'
