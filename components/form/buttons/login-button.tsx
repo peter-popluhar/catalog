@@ -8,10 +8,10 @@ type Props = {
 	form: MutableRefObject<HTMLFormElement>
 }
 
-export default function AddButton({form}: Props) {
-	const {handleForm, btnDisabled, isError} = useFormHook(
+export default function LoginButton({form}: Props) {
+	const {handleForm, btnDisabled, isError, errorMsg} = useFormHook(
 		form,
-		'/api/add',
+		'/api/login',
 		'POST',
 		'/items'
 	)
@@ -20,11 +20,11 @@ export default function AddButton({form}: Props) {
 
 	return (
 		<>
-			{isError && <p>{lngPath.error}</p>}
+			{isError && <p>{errorMsg}</p>}
 			<input
-				type='submit'
 				tabIndex={0}
-				value={lngPath.addBtn}
+				type='submit'
+				value={lngPath.loginBtn}
 				disabled={btnDisabled}
 				className={btn.btnPrimary}
 				onClick={(e) => handleForm(e, null)}

@@ -10,6 +10,7 @@ export const formCopy = {
 		updateBtn: 'update',
 		deleteBtn: 'delete',
 		error: 'all fields must be filled !!!',
+		loginBtn: 'Login',
 	},
 	sw: {
 		language: 'Swahili',
@@ -22,5 +23,6 @@ export const formCopy = {
 		updateBtn: 'sasisha',
 		deleteBtn: 'futa',
 		error: 'uwanja wote lazima ujazwe !!!',
+		loginBtn: 'Ingia',
 	},
 }

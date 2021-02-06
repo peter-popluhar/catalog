@@ -3,12 +3,13 @@ import {useRouter} from 'next/router'
 
 const headers = {'Content-Type': 'application/json'}
 
-export function useFormHook(formRef, fetchUrl, method, routerUrl) {
+export function useFormHook(formRef, fetchUrl, method, redirect) {
 	const router = useRouter()
 	const [btnDisabled, setBtnDisabled] = useState<boolean>(false)
-	const [error, setError] = useState<boolean>(false)
+	const [isError, setError] = useState<boolean>(false)
+	const [errorMsg, setErrorMsg] = useState('')
 
-	const handleItem = (e: {preventDefault: () => void}, id) => {
+	const handleForm = (e: {preventDefault: () => void}, id) => {
 		e.preventDefault()
 		setBtnDisabled(true)
 
@@ -19,7 +20,7 @@ export function useFormHook(formRef, fetchUrl, method, routerUrl) {
 				body: JSON.stringify(id),
 			}).then((res) => {
 				if (res.status === 200) {
-					router.push(routerUrl)
+					router.push(redirect)
 				}
 			})
 		}
@@ -33,15 +34,21 @@ export function useFormHook(formRef, fetchUrl, method, routerUrl) {
 				body: JSON.stringify(formValues),
 			}).then((res) => {
 				if (res.status === 203) {
+					setError(true)
+					setBtnDisabled(false)
+					setErrorMsg('All field must be filled!!!')
+				}
+				if (res.status === 400) {
 					setBtnDisabled(false)
 					setError(true)
+					setErrorMsg('Incorrect credentials!!!')
 				}
 				if (res.status === 200) {
 					formRef.current.reset()
 					setBtnDisabled(false)
 					setError(false)
 					res.json().then(() => {
-						router.push(routerUrl)
+						router.push(redirect)
 					})
 				}
 			})
@@ -49,8 +56,9 @@ export function useFormHook(formRef, fetchUrl, method, routerUrl) {
 	}
 
 	return {
-		handleItem,
+		handleForm,
 		btnDisabled,
-		error,
+		isError,
+		errorMsg,
 	}
 }

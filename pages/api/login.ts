@@ -1,8 +1,11 @@
-import {isEmptyFieldValidator} from '../../util/empty-field-validator'
+import {withIronSession} from 'next-iron-session'
+import {isEmptyFieldValidator} from './../../util/empty-field-validator'
 
-export default async function Add(req, res) {
+const {APPLICATION_SECRET, USER_NAME, USER_PASSWORD, COOKIE_NAME} = process.env
+
+async function Login(req, res) {
 	const data = req.body
-	console.log(data)
+	const {name, password} = data
 
 	if (req.method !== 'POST') {
 		res.setHeader('Allow', ['POST'])
@@ -16,10 +19,23 @@ export default async function Add(req, res) {
 		return
 	}
 
-	try {
-		res.json(data)
-		res.status(201)
-	} catch (e) {
-		console.log(e)
+	if (name !== USER_NAME && password !== USER_PASSWORD) {
+		return res.status(400).json({
+			status: 'error',
+			error: 'incorrect credentials',
+		})
 	}
+
+	req.session.set('user', {name})
+	await req.session.save()
+	res.json({msg: 'Logged in'})
+	res.status(200)
 }
+
+export default withIronSession(Login, {
+	cookieName: COOKIE_NAME,
+	password: APPLICATION_SECRET,
+	cookieOptions: {
+		secure: process.env.NODE_ENV === 'production',
+	},
+})

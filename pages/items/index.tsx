@@ -3,10 +3,11 @@ import MediaObject from './../../components/media-object'
 import grid from './../../components/global/grid.module.scss'
 import {MediaObjectsType} from './../../types/media-object-type'
 import MastHead from './../../components/masthead'
-const {MONGO_DB_COLLECTION} = process.env
 import {itemsCopy} from '../../copy/items'
 import {useSettingsContext} from './../../context/settings-context'
 import cslx from 'clsx'
+
+const {MONGO_DB_COLLECTION} = process.env
 
 type Props = {
 	isConnected: any

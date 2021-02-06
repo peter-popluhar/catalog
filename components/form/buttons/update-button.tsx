@@ -10,7 +10,7 @@ type Props = {
 }
 
 export default function UpdateButton({form, id}: Props) {
-	const {handleItem, error} = useFormHook(
+	const {handleForm, isError} = useFormHook(
 		form,
 		'/api/update',
 		'PUT',
@@ -21,9 +21,10 @@ export default function UpdateButton({form, id}: Props) {
 
 	return (
 		<div>
-			{error && <p>{lngPath.error}</p>}
+			{isError && <p>{lngPath.error}</p>}
 			<button
-				onClick={(e) => handleItem(e, id)}
+				tabIndex={0}
+				onClick={(e) => handleForm(e, id)}
 				className={`${btn.btnSuccess} ${btn.btnLg}`}
 			>
 				{lngPath.updateBtn}
