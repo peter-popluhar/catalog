@@ -1,4 +1,6 @@
-export const formCopy = {
+import {Copy} from './../types/copy-type'
+
+export const formCopy: Copy = {
 	en: {
 		language: 'English',
 		productName: 'Product Name',

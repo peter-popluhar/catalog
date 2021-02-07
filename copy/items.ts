@@ -1,4 +1,6 @@
-export const itemsCopy = {
+import {Copy, ItemsCopy} from './../types/copy-type'
+
+export const itemsCopy: ItemsCopy = {
 	en: {
 		title: 'Catalog',
 		notConnected: {
@@ -24,7 +26,7 @@ export const itemsCopy = {
 	},
 }
 
-export const itemCopy = {
+export const itemCopy: Copy = {
 	en: {
 		title: 'Editing',
 		notExists: 'We are sorry, but this Item Doesnt exists anymore!',

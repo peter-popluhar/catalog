@@ -1,4 +1,6 @@
-export const settingsCopy = {
+import {Copy} from './../types/copy-type'
+
+export const settingsCopy: Copy = {
 	en: {
 		profile: 'View Profile',
 		logout: 'Logout',

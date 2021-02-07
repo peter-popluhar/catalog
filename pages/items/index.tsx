@@ -15,7 +15,7 @@ type Props = {
 	items: MediaObjectsType
 }
 
-export default function Home({isConnected, items}: Props) {
+export default function List({isConnected, items}: Props) {
 	const {lng, layout} = useSettingsContext()
 	const lngPath = itemsCopy?.[lng]
 

@@ -1,4 +1,6 @@
-export const loginCopy = {
+import {Copy} from './../types/copy-type'
+
+export const loginCopy: Copy = {
 	en: {
 		title: 'Login',
 		legend: 'Enter your credential',

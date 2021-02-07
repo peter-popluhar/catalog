@@ -1,4 +1,6 @@
-export const mediaObjectCopy = {
+import {Copy} from './../types/copy-type'
+
+export const mediaObjectCopy: Copy = {
 	en: {
 		editBtn: 'edit',
 	},
