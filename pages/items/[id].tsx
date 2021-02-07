@@ -1,3 +1,4 @@
+import {GetServerSideProps} from 'next'
 import {withIronSession} from 'next-iron-session'
 import {connectToDatabase} from '../../util/mongodb'
 import {ObjectID} from 'mongodb'
@@ -5,10 +6,16 @@ import MastHead from './../../components/masthead'
 import Form from './../../components/form'
 import {itemCopy} from '../../copy/items'
 import {useSettingsContext} from './../../context/settings-context'
+import {UserType} from './../../types/user-type'
+import {ItemType} from '../../types/data-type'
 
 const {MONGO_DB_COLLECTION, COOKIE_NAME} = process.env
 
-export default function Item({data}) {
+type Props = {
+	data: ItemType
+}
+
+export default function Item({data}: Props) {
 	const {lng} = useSettingsContext()
 	const lngPath = itemCopy?.[lng]
 
@@ -27,9 +34,9 @@ export default function Item({data}) {
 	)
 }
 
-export const getServerSideProps = withIronSession(
+export const getServerSideProps: GetServerSideProps = withIronSession(
 	async ({req, query}) => {
-		const user = req.session.get('user')
+		const user: UserType = req.session.get('user')
 
 		if (!user) {
 			return {

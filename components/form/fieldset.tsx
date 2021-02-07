@@ -1,10 +1,10 @@
 import React from 'react'
-import {MediaObjectType} from '../../types/media-object-type'
+import {ItemType} from '../../types/data-type'
 import FormField from './form-field'
 import {formCopy} from '../../copy/form'
 
 type Props = {
-	data?: MediaObjectType
+	data?: ItemType
 	isEditable?: boolean
 	lng?: string
 	focus?: boolean

@@ -3,12 +3,12 @@ import Image from 'next/image'
 import styles from './media-object.module.scss'
 import flag from './../global/flag.module.scss'
 import btn from './../global/buttons.module.scss'
-import {MediaObjectType} from './../../types/media-object-type'
+import {ItemType} from '../../types/data-type'
 import {mediaObjectCopy} from './../../copy/media-object'
 import {useSettingsContext} from './../../context/settings-context'
 
 type Props = {
-	data: MediaObjectType
+	data: ItemType
 }
 
 export default function MediaObject({data}: Props) {

@@ -1,4 +1,4 @@
-export type MediaObjectType = {
+export type ItemType = {
 	_id: string
 	enLabelContent: string
 	enName: string
@@ -12,4 +12,4 @@ export type MediaObjectType = {
 	swPrice: number
 }
 
-export type MediaObjectsType = MediaObjectType[]
+export type ItemsType = ItemType[]

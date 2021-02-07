@@ -1,12 +1,12 @@
 import React, {useRef} from 'react'
 import styles from './form.module.scss'
 import grid from './../global/grid.module.scss'
-import {MediaObjectType} from './../../types/media-object-type'
+import {ItemType} from '../../types/data-type'
 import Buttons from './buttons'
 import Fieldset from './fieldset'
 
 type Props = {
-	data?: MediaObjectType
+	data?: ItemType
 	isEditable?: boolean
 }
 

@@ -1,18 +1,20 @@
+import {GetServerSideProps} from 'next'
 import {withIronSession} from 'next-iron-session'
 import {connectToDatabase} from '../../util/mongodb'
 import MediaObject from './../../components/media-object'
 import grid from './../../components/global/grid.module.scss'
-import {MediaObjectsType} from './../../types/media-object-type'
+import {ItemsType} from '../../types/data-type'
 import MastHead from './../../components/masthead'
 import {itemsCopy} from '../../copy/items'
 import {useSettingsContext} from './../../context/settings-context'
 import cslx from 'clsx'
+import {UserType} from './../../types/user-type'
 
 const {MONGO_DB_COLLECTION, COOKIE_NAME} = process.env
 
 type Props = {
-	isConnected: any
-	items: MediaObjectsType
+	isConnected: boolean
+	items: ItemsType
 }
 
 export default function List({isConnected, items}: Props) {
@@ -49,9 +51,9 @@ export default function List({isConnected, items}: Props) {
 	)
 }
 
-export const getServerSideProps = withIronSession(
+export const getServerSideProps: GetServerSideProps = withIronSession(
 	async ({req}) => {
-		const user = req.session.get('user')
+		const user: UserType = req.session.get('user')
 
 		if (!user) {
 			return {
@@ -62,7 +64,7 @@ export const getServerSideProps = withIronSession(
 			}
 		}
 
-		let items = []
+		let items: ItemsType = []
 		const {client, db} = await connectToDatabase()
 		const isConnected = await client.isConnected()
 
