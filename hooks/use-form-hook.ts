@@ -7,7 +7,7 @@ export function useFormHook(formRef, fetchUrl, method, redirect) {
 	const router = useRouter()
 	const [btnDisabled, setBtnDisabled] = useState<boolean>(false)
 	const [isError, setError] = useState<boolean>(false)
-	const [errorMsg, setErrorMsg] = useState('')
+	const [errorMsg, setErrorMsg] = useState<string>('')
 
 	const handleForm = (e: {preventDefault: () => void}, id) => {
 		e.preventDefault()

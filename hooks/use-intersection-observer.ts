@@ -6,7 +6,7 @@ export const useIntersectionObserver = (
 	fallbackState = false
 ): [RefObject<HTMLDivElement | null>, boolean] => {
 	const ref = useRef<HTMLDivElement | null>(null)
-	const [isIntersecting, setIntersecting] = useState(false)
+	const [isIntersecting, setIntersecting] = useState<boolean>(false)
 
 	useEffect(() => {
 		if (typeof window.IntersectionObserver === 'undefined') {

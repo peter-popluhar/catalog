@@ -11,7 +11,7 @@ import {settingsCopy} from './../../copy/settings'
 import overlay from './overlay.module.scss'
 
 export default function Settings() {
-	const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState<boolean>(false)
 	const router = useRouter()
 	const pathname = router.pathname
 	const {lng} = useSettingsContext()
