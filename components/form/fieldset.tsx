@@ -5,7 +5,6 @@ import {formCopy} from '../../copy/form'
 
 type Props = {
 	data?: ItemType
-	isEditable?: boolean
 	lng?: string
 	focus?: boolean
 }

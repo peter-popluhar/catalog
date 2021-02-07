@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from 'react'
+import {useState, useRef, useEffect, MouseEvent} from 'react'
 import cslx from 'clsx'
 import styles from './settings.module.scss'
 import btn from './button.module.scss'
@@ -22,7 +22,7 @@ export default function Settings() {
 		setOpen(!open)
 	}
 
-	const handleLogout = (e) => {
+	const handleLogout = (e: {preventDefault: () => void}) => {
 		e.preventDefault()
 
 		fetch('/api/logout', {
@@ -37,8 +37,8 @@ export default function Settings() {
 		setOpen(false)
 	}
 
-	const handleClickOutside = (e) => {
-		if (node.current.contains(e.target)) {
+	const handleClickOutside = (e: any) => {
+		if (node?.current?.contains(e.target)) {
 			return
 		}
 		setOpen(false)

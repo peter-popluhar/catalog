@@ -5,7 +5,7 @@ import styles from './language-switcher.module.scss'
 export default function LanguageSwitcher() {
 	const {setLanguage, lng} = useSettingsContext()
 
-	const handlelanguage = (lng) => {
+	const handlelanguage = (lng: string) => {
 		setLanguage(lng)
 	}
 

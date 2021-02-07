@@ -7,7 +7,7 @@ export default function LayoutSwitcher() {
 	const {setLayout, layout, lng} = useSettingsContext()
 	const copyPath = settingsCopy?.[lng]
 
-	const handleLayout = (layout) => {
+	const handleLayout = (layout: string) => {
 		setLayout(layout)
 	}
 
