@@ -1,9 +1,17 @@
+import {NextApiResponse} from 'next'
 import {withIronSession} from 'next-iron-session'
 import {isEmptyFieldValidator} from './../../util/empty-field-validator'
 
 const {APPLICATION_SECRET, USER_NAME, USER_PASSWORD, COOKIE_NAME} = process.env
 
-async function Login(req, res) {
+async function Login(
+	req: {
+		body: any
+		method: string
+		session: {set: (arg0: string, arg1: {name: any}) => void; save: () => any}
+	},
+	res: NextApiResponse
+) {
 	const data = req.body
 	const {name, password} = data
 

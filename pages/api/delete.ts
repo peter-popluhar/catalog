@@ -1,10 +1,14 @@
+import {NextApiRequest, NextApiResponse} from 'next'
 import {connectToDatabase} from '../../util/mongodb'
 import {ObjectID} from 'mongodb'
 
 const {MONGO_DB_COLLECTION} = process.env
 
-export default async function Delete(req, res) {
-	const id = req.body
+export default async function Delete(
+	req: NextApiRequest,
+	res: NextApiResponse
+) {
+	const id: string = req.body
 
 	try {
 		const objectId = await ObjectID(id)

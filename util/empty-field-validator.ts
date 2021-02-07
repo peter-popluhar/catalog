@@ -1,4 +1,4 @@
-export function isEmptyFieldValidator(obj: {[x: string]: string}) {
+export function isEmptyFieldValidator(obj: any) {
 	for (const key in obj) {
 		if (obj[key] === '') {
 			return true

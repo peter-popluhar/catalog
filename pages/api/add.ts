@@ -1,10 +1,12 @@
+import {NextApiRequest, NextApiResponse} from 'next'
 import {connectToDatabase} from '../../util/mongodb'
 import {isEmptyFieldValidator} from './../../util/empty-field-validator'
+import {ItemType} from '../../types/data-type'
 
 const {MONGO_DB_COLLECTION} = process.env
 
-export default async function Add(req, res) {
-	const data = req.body
+export default async function Add(req: NextApiRequest, res: NextApiResponse) {
+	const data: ItemType = req.body
 
 	if (req.method !== 'POST') {
 		res.setHeader('Allow', ['POST'])
