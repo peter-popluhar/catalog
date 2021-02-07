@@ -1,15 +1,23 @@
 import {useState} from 'react'
 import {useRouter} from 'next/router'
+import {MutableRefObject} from 'react'
+
+type Form = MutableRefObject<HTMLFormElement> | null
 
 const headers = {'Content-Type': 'application/json'}
 
-export function useFormHook(formRef, fetchUrl, method, redirect) {
+export function useFormHook(
+	formRef: Form,
+	fetchUrl: string,
+	method: string,
+	redirect: string
+) {
 	const router = useRouter()
 	const [btnDisabled, setBtnDisabled] = useState<boolean>(false)
 	const [isError, setError] = useState<boolean>(false)
 	const [errorMsg, setErrorMsg] = useState<string>('')
 
-	const handleForm = (e: {preventDefault: () => void}, id) => {
+	const handleForm = (e: {preventDefault: () => void}, id: string | null) => {
 		e.preventDefault()
 		setBtnDisabled(true)
 
