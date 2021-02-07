@@ -1,24 +1,31 @@
-import React, {createContext, useContext, useState} from 'react'
+import React, {createContext, useContext, useState, ReactNode} from 'react'
 
-const SettingsContext = createContext({
+type Props = {
+	children: ReactNode
+}
+
+type Settings = {
+	theme: string
+	setTheme: (params: string) => void
+	layout: string
+	setLayout: (params: string) => void
+	lng: string
+	setLanguage: (params: string) => void
+}
+
+const SettingsContext = createContext<Settings>({
 	theme: '',
-	setTheme: (theme) => {
-		//
-	},
+	setTheme: () => {},
 	layout: '',
-	setLayout: (layout) => {
-		//
-	},
+	setLayout: () => {},
 	lng: '',
-	setLanguage: (lng) => {
-		//
-	},
+	setLanguage: () => {},
 })
 
-export const SettingsProvider = ({children}) => {
-	const [theme, setTheme] = useState('light')
-	const [layout, setLayout] = useState('detail')
-	const [lng, setLanguage] = useState('en')
+export const SettingsProvider = ({children}: Props) => {
+	const [theme, setTheme] = useState<string>('light')
+	const [layout, setLayout] = useState<string>('detail')
+	const [lng, setLanguage] = useState<string>('en')
 
 	return (
 		<SettingsContext.Provider
