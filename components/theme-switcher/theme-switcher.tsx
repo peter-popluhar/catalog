@@ -1,3 +1,4 @@
+import {useCallback} from 'react'
 import styles from './theme-switcher.module.scss'
 import cslx from 'clsx'
 import {useSettingsContext} from './../../context/settings-context'
@@ -7,9 +8,9 @@ export default function ThemeSwitcher() {
 	const {theme, setTheme, lng} = useSettingsContext()
 	const copyPath = settingsCopy?.[lng]
 
-	const handleTheme = (theme) => {
+	const handleTheme = useCallback((theme: string) => {
 		setTheme(theme)
-	}
+	}, [])
 
 	return (
 		<ul className={styles.wrapper}>

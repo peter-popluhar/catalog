@@ -1,3 +1,4 @@
+import {useCallback} from 'react'
 import cslx from 'clsx'
 import {useSettingsContext} from '../../context/settings-context'
 import styles from './language-switcher.module.scss'
@@ -5,9 +6,9 @@ import styles from './language-switcher.module.scss'
 export default function LanguageSwitcher() {
 	const {setLanguage, lng} = useSettingsContext()
 
-	const handlelanguage = (lng: string) => {
+	const handlelanguage = useCallback((lng: string) => {
 		setLanguage(lng)
-	}
+	}, [])
 
 	return (
 		<ul className={styles.wrapper}>

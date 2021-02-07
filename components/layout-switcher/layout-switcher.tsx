@@ -1,3 +1,4 @@
+import {useCallback} from 'react'
 import styles from './layout-switcher.module.scss'
 import cslx from 'clsx'
 import {useSettingsContext} from './../../context/settings-context'
@@ -7,9 +8,9 @@ export default function LayoutSwitcher() {
 	const {setLayout, layout, lng} = useSettingsContext()
 	const copyPath = settingsCopy?.[lng]
 
-	const handleLayout = (layout: string) => {
+	const handleLayout = useCallback((layout: string) => {
 		setLayout(layout)
-	}
+	}, [])
 
 	return (
 		<ul className={styles.wrapper}>

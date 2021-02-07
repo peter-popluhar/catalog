@@ -1,4 +1,4 @@
-import {MutableRefObject} from 'react'
+import {MutableRefObject, useCallback} from 'react'
 import {useFormHook} from './../../../hooks/use-form-hook'
 import btn from './../../global/buttons.module.scss'
 import {formCopy} from '../../../copy/form'
@@ -19,12 +19,16 @@ export default function UpdateButton({form, id}: Props) {
 	const {lng} = useSettingsContext()
 	const lngPath = formCopy?.[lng]
 
+	const handleClick = useCallback((e: {preventDefault: () => void}) => {
+		handleForm(e, id)
+	}, [])
+
 	return (
 		<div>
 			{isError && <p>{errorMsg}</p>}
 			<button
 				tabIndex={0}
-				onClick={(e) => handleForm(e, id)}
+				onClick={handleClick}
 				className={`${btn.btnSuccess} ${btn.btnLg}`}
 			>
 				{lngPath.updateBtn}

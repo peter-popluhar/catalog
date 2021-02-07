@@ -1,4 +1,4 @@
-import {MutableRefObject} from 'react'
+import {MutableRefObject, useCallback} from 'react'
 import {useFormHook} from './../../../hooks/use-form-hook'
 import btn from './../../global/buttons.module.scss'
 import {formCopy} from '../../../copy/form'
@@ -14,11 +14,15 @@ export default function DeleteButton({id, form}: Props) {
 	const {lng} = useSettingsContext()
 	const lngPath = formCopy?.[lng]
 
+	const handleClick = useCallback((e: {preventDefault: () => void}) => {
+		handleForm(e, id)
+	}, [])
+
 	return (
 		<div>
 			<button
 				tabIndex={0}
-				onClick={(e) => handleForm(e, id)}
+				onClick={handleClick}
 				className={`${btn.btnDelete} ${btn.btnLg}`}
 			>
 				{lngPath.deleteBtn}

@@ -1,4 +1,4 @@
-import {MutableRefObject} from 'react'
+import {MutableRefObject, useCallback} from 'react'
 import {useFormHook} from './../../../hooks/use-form-hook'
 import btn from './../../global/buttons.module.scss'
 import {formCopy} from '../../../copy/form'
@@ -18,6 +18,10 @@ export default function LoginButton({form}: Props) {
 	const {lng} = useSettingsContext()
 	const lngPath = formCopy?.[lng]
 
+	const handleClick = useCallback((e: {preventDefault: () => void}) => {
+		handleForm(e, null)
+	}, [])
+
 	return (
 		<>
 			{isError && <p>{errorMsg}</p>}
@@ -27,7 +31,7 @@ export default function LoginButton({form}: Props) {
 				value={lngPath.loginBtn}
 				disabled={btnDisabled}
 				className={btn.btnPrimary}
-				onClick={(e) => handleForm(e, null)}
+				onClick={handleClick}
 			/>
 		</>
 	)

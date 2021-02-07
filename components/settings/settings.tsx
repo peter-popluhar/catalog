@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect, MouseEvent} from 'react'
+import {useState, useRef, useEffect, useCallback} from 'react'
 import cslx from 'clsx'
 import styles from './settings.module.scss'
 import btn from './button.module.scss'
@@ -18,11 +18,11 @@ export default function Settings() {
 	const copyPath = settingsCopy?.[lng]
 	const node = useRef<HTMLDivElement | null>()
 
-	const handleListVisibility = () => {
+	const handleListVisibility = useCallback(() => {
 		setOpen(!open)
-	}
+	}, [open])
 
-	const handleLogout = (e: {preventDefault: () => void}) => {
+	const handleLogout = useCallback((e: {preventDefault: () => void}) => {
 		e.preventDefault()
 
 		fetch('/api/logout', {
@@ -35,14 +35,14 @@ export default function Settings() {
 			}
 		})
 		setOpen(false)
-	}
+	}, [])
 
-	const handleClickOutside = (e: any) => {
+	const handleClickOutside = useCallback((e: any) => {
 		if (node?.current?.contains(e.target)) {
 			return
 		}
 		setOpen(false)
-	}
+	}, [])
 
 	useEffect(() => {
 		if (open) {
