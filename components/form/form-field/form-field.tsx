@@ -31,11 +31,12 @@ export default function FormField({
 
 	return (
 		<div className={formField.field}>
-			<label>
+			<label htmlFor={name}>
 				<span className={`text--sm ${formLabel.formLabel}`}>{label}:</span>
 				{inputType === 'area' ? (
 					<textarea
 						name={name}
+						id={name}
 						className={`${input.input} ${input.area}`}
 						required
 						defaultValue={defaultValue}
@@ -45,6 +46,7 @@ export default function FormField({
 						<input
 							type={inputType}
 							name={name}
+							id={name}
 							className={input.input}
 							required
 							ref={hasFocus && inputFocus}
