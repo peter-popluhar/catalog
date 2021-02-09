@@ -5,5 +5,6 @@ export type ItemsCopy = {
 		title: string
 		notConnected: {[x: string]: string}
 		notItems: {[x: string]: string}
+		search: {[x: string]: string}
 	}
 }

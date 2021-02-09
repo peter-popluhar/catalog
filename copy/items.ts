@@ -11,6 +11,10 @@ export const itemsCopy: ItemsCopy = {
 			title: 'Looks like there are not any items yet.',
 			subTitle: 'Please go to Add item page!',
 		},
+		search: {
+			label: 'Type to filter items',
+			placeholder: 'search',
+		},
 	},
 	sw: {
 		title: 'Katalogi',
@@ -22,6 +26,10 @@ export const itemsCopy: ItemsCopy = {
 		notItems: {
 			title: 'Inaonekana kama bado hakuna bidhaa.',
 			subTitle: 'Tafadhali nenda kwenye Ongeza ukurasa wa bidhaa!',
+		},
+		search: {
+			label: 'Chapa kuchuja vitu',
+			placeholder: 'tafuta',
 		},
 	},
 }

@@ -11,6 +11,8 @@ type Props = {
 	name: string
 	hasFocus?: boolean
 	currency?: string
+	handleChange?: (e) => void
+	placeholder?: string
 }
 
 export default function FormField({
@@ -20,6 +22,8 @@ export default function FormField({
 	name,
 	hasFocus,
 	currency,
+	handleChange,
+	placeholder,
 }: Props) {
 	const inputFocus = useRef<HTMLInputElement | null>()
 
@@ -51,6 +55,8 @@ export default function FormField({
 							required
 							ref={hasFocus && inputFocus}
 							defaultValue={defaultValue}
+							onChange={handleChange}
+							placeholder={placeholder}
 						/>
 
 						{currency && (
