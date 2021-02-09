@@ -1,7 +1,7 @@
 import React from 'react'
 
-import {render, screen} from './../test-utils'
-import Login from './../../pages/login'
+import {render, screen} from '../test-utils'
+import Login from '../../pages/login'
 
 describe('Login Page', () => {
 	it('should render form', () => {
