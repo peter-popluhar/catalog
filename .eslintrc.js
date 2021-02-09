@@ -9,7 +9,7 @@ module.exports = {
 		'prettier',
 		'plugin:testing-library/recommended',
 		'plugin:testing-library/react',
-		'plugin:jest-dom/recommended'
+		'plugin:jest-dom/recommended',
 	],
 	settings: {
 		react: {
@@ -22,7 +22,13 @@ module.exports = {
 		es6: true,
 		jest: true,
 	},
-	plugins: ['@typescript-eslint', 'react', 'prettier, testing-library', 'jest-dom'],
+	plugins: [
+		'@typescript-eslint',
+		'react',
+		'prettier',
+		'testing-library',
+		'jest-dom',
+	],
 	parserOptions: {
 		ecmaFeatures: {
 			jsx: true,
