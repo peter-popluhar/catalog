@@ -3,4 +3,6 @@ module.exports = {
 	moduleNameMapper: {
 		'\\.(scss|sass|css)$': 'identity-obj-proxy',
 	},
-}
+	preset: '@shelf/jest-mongodb',
+	watchPathIgnorePatterns: ['globalConfig'],
+  };
