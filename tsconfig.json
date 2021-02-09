@@ -19,7 +19,9 @@
 		"**/*.ts",
 		"**/*.tsx",
 		"next.config.js",
-		"test/pages/test-utils.js"
+		"test/pages/test-utils.js",
+		"test/components/settings.test.js",
+		"test/test-utils.js"
 	],
 	"exclude": ["node_modules"]
 }

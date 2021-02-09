@@ -13,10 +13,11 @@ export default function ThemeSwitcher() {
 	}, [])
 
 	return (
-		<ul className={styles.wrapper}>
+		<ul className={styles.wrapper} role='menu'>
 			<li
 				className={cslx(styles.item, theme === 'light' && styles.active)}
 				onClick={() => handleTheme('light')}
+				role='none'
 			>
 				<input
 					type='radio'
@@ -24,14 +25,16 @@ export default function ThemeSwitcher() {
 					id='light'
 					value='light'
 					className={styles.input}
+					aria-checked={theme === 'light' ? 'true' : 'false'}
 				/>
-				<label htmlFor='light' className={styles.label}>
+				<label htmlFor='light' className={styles.label} role='menuitemradio'>
 					<span>{copyPath.light}</span>
 				</label>
 			</li>
 			<li
 				className={cslx(styles.item, theme === 'dark' && styles.active)}
 				onClick={() => handleTheme('dark')}
+				role='none'
 			>
 				<input
 					type='radio'
@@ -39,8 +42,9 @@ export default function ThemeSwitcher() {
 					id='dark'
 					value='dark'
 					className={styles.input}
+					aria-checked={theme === 'dark' ? 'true' : 'false'}
 				/>
-				<label htmlFor='dark' className={styles.label}>
+				<label htmlFor='dark' className={styles.label} role='menuitemradio'>
 					<span>{copyPath.dark}</span>
 				</label>
 			</li>

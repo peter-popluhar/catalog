@@ -13,10 +13,12 @@ export default function LayoutSwitcher() {
 	}, [])
 
 	return (
-		<ul className={styles.wrapper}>
+		<ul className={styles.wrapper} role='menu'>
 			<li
 				className={cslx(styles.item, layout === 'detail' && styles.active)}
 				onClick={() => handleLayout('detail')}
+				role='menuitemradio'
+				aria-checked={layout === 'detail' ? 'true' : 'false'}
 			>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
@@ -31,6 +33,8 @@ export default function LayoutSwitcher() {
 			<li
 				className={cslx(styles.item, layout === 'list' && styles.active)}
 				onClick={() => handleLayout('list')}
+				role='menuitemradio'
+				aria-checked={layout === 'list' ? 'true' : 'false'}
 			>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'

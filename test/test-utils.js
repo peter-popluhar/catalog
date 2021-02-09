@@ -1,6 +1,6 @@
 import React from 'react'
 import {render} from '@testing-library/react'
-import {SettingsProvider} from './../context/settings-context'
+import {SettingsProvider} from '../context/settings-context'
 
 const AllTheProviders = ({children}) => {
 	return <SettingsProvider>{children}</SettingsProvider>

@@ -11,23 +11,27 @@ export default function LanguageSwitcher() {
 	}, [])
 
 	return (
-		<ul className={styles.wrapper}>
-			<li className={styles.item}>
+		<ul className={styles.wrapper} role='menu'>
+			<li className={styles.item} role='none'>
 				<img
 					alt='english language'
 					src='/uk.svg'
 					className={cslx(styles.flag, lng === 'en' && styles.active)}
 					onClick={() => handlelanguage('en')}
 					title='English'
+					role='menuitemradio'
+					aria-checked={lng === 'en' ? 'true' : 'false'}
 				/>
 			</li>
-			<li className={styles.item}>
+			<li className={styles.item} role='none'>
 				<img
 					alt='swahili language'
 					src='/kenya.svg'
 					className={cslx(styles.flag, lng === 'sw' && styles.active)}
 					onClick={() => handlelanguage('sw')}
 					title='Swahili'
+					role='menuitemradio'
+					aria-checked={lng === 'sw' ? 'true' : 'false'}
 				/>
 			</li>
 		</ul>

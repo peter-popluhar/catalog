@@ -1,16 +1,16 @@
 import React from 'react'
 
-import {render} from './../test-utils'
+import {render, screen} from './../test-utils'
 import Login from './../../pages/login'
 
 describe('Login Page', () => {
 	it('should render form', () => {
-		const {getByLabelText, getByText} = render(<Login />)
-		const userName = getByLabelText('User Name:', {selector: 'input'})
-		const userPassword = getByLabelText('User Password:', {
+		render(<Login />)
+		const userName = screen.getByLabelText('User Name:', {selector: 'input'})
+		const userPassword = screen.getByLabelText('User Password:', {
 			selector: 'input',
 		})
-		const button = getByText('Login', {selector: 'input'})
+		const button = screen.getByText(/login/i, {selector: 'input'})
 
 		expect(userName).toBeInTheDocument()
 		expect(userPassword).toBeInTheDocument()

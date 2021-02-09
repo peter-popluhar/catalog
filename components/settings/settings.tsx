@@ -62,33 +62,45 @@ export default function Settings() {
 				<button
 					className={cslx(btn.btnProfile, pathname === '/login' && btn.Nouser)}
 					onClick={handleListVisibility}
+					aria-haspopup='true'
+					aria-expanded={open ? 'true' : 'false'}
 				>
 					{copyPath.profile}
 				</button>
-				<ul className={cslx(styles.list, open && styles.visible)}>
+				<ul
+					className={cslx(styles.list, open && styles.visible)}
+					role='menu'
+					aria-label={copyPath.profile}
+				>
 					{pathname !== '/login' && (
 						<>
-							<li className={styles.item}>
-								<span className={styles.link}>{copyPath.greet} George</span>
+							<li className={styles.item} role='none'>
+								<span role='menuitem' className={styles.link}>
+									{copyPath.greet} George
+								</span>
 							</li>
-							<li className={styles.item}>
-								<button onClick={handleLogout} className={btn.btnLogout}>
+							<li className={styles.item} role='none'>
+								<button
+									role='menuitem'
+									onClick={handleLogout}
+									className={btn.btnLogout}
+								>
 									{copyPath.logout}
 								</button>
 							</li>
 						</>
 					)}
 					{pathname === '/items' && (
-						<li className={styles.item}>
+						<li className={styles.item} role='none'>
 							<LayoutSwitcher />
 						</li>
 					)}
 
-					<li className={styles.item}>
+					<li className={styles.item} role='none'>
 						<ThemeSwitcher />
 					</li>
 
-					<li className={styles.item}>
+					<li className={styles.item} role='none'>
 						<LanguageSwitcher />
 					</li>
 				</ul>
