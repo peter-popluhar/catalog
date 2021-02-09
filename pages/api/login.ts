@@ -27,17 +27,17 @@ async function Login(
 		return
 	}
 
-	if (name !== USER_NAME && password !== USER_PASSWORD) {
+	if (name === USER_NAME && password === USER_PASSWORD) {
+		req.session.set('user', {name})
+		await req.session.save()
+		res.json({msg: 'Logged in'})
+		res.status(200)
+	} else {
 		return res.status(400).json({
 			status: 'error',
 			error: 'incorrect credentials',
 		})
 	}
-
-	req.session.set('user', {name})
-	await req.session.save()
-	res.json({msg: 'Logged in'})
-	res.status(200)
 }
 
 export default withIronSession(Login, {
