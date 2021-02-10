@@ -16,9 +16,15 @@ export function useFormHook(
 	const [btnDisabled, setBtnDisabled] = useState<boolean>(false)
 	const [isError, setError] = useState<boolean>(false)
 	const [errorMsg, setErrorMsg] = useState<string>('')
+	const [testStatus, setTestStatus] = useState<Record<string, unknown>>({})
 
 	const handleForm = (e: {preventDefault: () => void}, id: string | null) => {
-		e.preventDefault()
+		// FIXME
+		// this is ugly, but I couldnt pass e from use-form.test.js
+		if (e) {
+			e.preventDefault()
+		}
+
 		setBtnDisabled(true)
 
 		if (fetchUrl === '/api/delete') {
@@ -28,19 +34,33 @@ export function useFormHook(
 				body: JSON.stringify(id),
 			}).then((res) => {
 				if (res.status === 200) {
+					setBtnDisabled(false)
 					router.push(redirect)
+					setTestStatus({
+						fetchUrl: fetchUrl,
+						method: method,
+						status: 200,
+						redirect: redirect,
+					})
 				}
 			})
 		}
 
 		if (fetchUrl === '/api/logout') {
-			fetch('/api/logout', {
+			fetch(fetchUrl, {
 				headers: headers,
 				method: method,
 				body: JSON.stringify({}),
 			}).then((res) => {
 				if (res.status === 200) {
+					setBtnDisabled(false)
 					router.push(redirect)
+					setTestStatus({
+						fetchUrl: fetchUrl,
+						method: method,
+						status: 200,
+						redirect: redirect,
+					})
 				}
 			})
 		}
@@ -79,5 +99,6 @@ export function useFormHook(
 		btnDisabled,
 		isError,
 		errorMsg,
+		testStatus,
 	}
 }

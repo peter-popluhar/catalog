@@ -66,7 +66,6 @@ export default function List({isConnected, items}: Props) {
 				label={lngPath.search.label}
 				inputType='search'
 				name='search'
-				hasFocus
 				defaultValue={searchTerm}
 				handleChange={handleChange}
 				placeholder={lngPath.search.placeholder}
