@@ -69,6 +69,7 @@ export default function List({isConnected, items}: Props) {
 				defaultValue={searchTerm}
 				handleChange={handleChange}
 				placeholder={lngPath.search.placeholder}
+				orange
 			/>
 			<section className={cslx(grid.grid, layout === 'list' && grid.gridList)}>
 				{searchResults.map((item) => (

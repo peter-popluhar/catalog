@@ -13,6 +13,7 @@ type Props = {
 	currency?: string
 	handleChange?: (e) => void
 	placeholder?: string
+	orange?: boolean
 }
 
 export default function FormField({
@@ -24,6 +25,7 @@ export default function FormField({
 	currency,
 	handleChange,
 	placeholder,
+	orange,
 }: Props) {
 	const inputFocus = useRef<HTMLInputElement | null>()
 
@@ -51,12 +53,13 @@ export default function FormField({
 							type={inputType}
 							name={name}
 							id={name}
-							className={input.input}
+							className={cslx(input.input, orange && input.orange)}
 							required
 							ref={hasFocus && inputFocus}
 							defaultValue={defaultValue}
 							onChange={handleChange}
 							placeholder={placeholder}
+							autoComplete='off'
 						/>
 
 						{currency && (
