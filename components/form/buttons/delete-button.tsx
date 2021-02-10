@@ -10,7 +10,12 @@ type Props = {
 }
 
 export default function DeleteButton({id, form}: Props) {
-	const {handleForm} = useFormHook(form, '/api/delete', 'DELETE', '/items')
+	const {handleForm, btnDisabled} = useFormHook(
+		form,
+		'/api/delete',
+		'DELETE',
+		'/items'
+	)
 	const {lng} = useSettingsContext()
 	const lngPath = formCopy?.[lng]
 
@@ -24,6 +29,7 @@ export default function DeleteButton({id, form}: Props) {
 				tabIndex={0}
 				onClick={handleClick}
 				className={`${btn.btnDelete} ${btn.btnLg}`}
+				disabled={btnDisabled}
 			>
 				{lngPath.deleteBtn}
 			</button>

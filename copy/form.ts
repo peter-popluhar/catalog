@@ -13,6 +13,7 @@ export const formCopy: Copy = {
 		deleteBtn: 'delete',
 		error: 'all fields must be filled !!!',
 		loginBtn: 'Login',
+		logoutBtn: 'Logout',
 	},
 	sw: {
 		language: 'Swahili',
@@ -26,5 +27,6 @@ export const formCopy: Copy = {
 		deleteBtn: 'futa',
 		error: 'uwanja wote lazima ujazwe !!!',
 		loginBtn: 'Ingia',
+		logoutBtn: 'Kuondoka',
 	},
 }

@@ -21,11 +21,23 @@ export function useFormHook(
 		e.preventDefault()
 		setBtnDisabled(true)
 
-		if (method === 'DELETE') {
+		if (fetchUrl === '/api/delete') {
 			fetch(fetchUrl, {
 				headers: headers,
 				method: method,
 				body: JSON.stringify(id),
+			}).then((res) => {
+				if (res.status === 200) {
+					router.push(redirect)
+				}
+			})
+		}
+
+		if (fetchUrl === '/api/logout') {
+			fetch('/api/logout', {
+				headers: headers,
+				method: method,
+				body: JSON.stringify({}),
 			}).then((res) => {
 				if (res.status === 200) {
 					router.push(redirect)
@@ -52,7 +64,6 @@ export function useFormHook(
 					setErrorMsg('Incorrect credentials!!!')
 				}
 				if (res.status === 200) {
-					formRef.current.reset()
 					setBtnDisabled(false)
 					setError(false)
 					res.json().then(() => {

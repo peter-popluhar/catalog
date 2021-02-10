@@ -9,6 +9,8 @@ import {useRouter} from 'next/router'
 import {useSettingsContext} from './../../context/settings-context'
 import {settingsCopy} from './../../copy/settings'
 import overlay from './overlay.module.scss'
+import LogoutButton from './../../components/form/buttons/logout-button'
+import Router from 'next/router'
 
 export default function Settings() {
 	const [open, setOpen] = useState<boolean>(false)
@@ -22,27 +24,16 @@ export default function Settings() {
 		setOpen(!open)
 	}, [open])
 
-	const handleLogout = useCallback((e: {preventDefault: () => void}) => {
-		e.preventDefault()
-
-		fetch('/api/logout', {
-			method: 'POST',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({}),
-		}).then((res) => {
-			if (res.status === 200) {
-				router.push('/login')
-			}
-		})
-		setOpen(false)
-	}, [])
-
 	const handleClickOutside = useCallback((e: any) => {
 		if (node?.current?.contains(e.target)) {
 			return
 		}
 		setOpen(false)
 	}, [])
+
+	Router.events.on('routeChangeStart', () => {
+		setOpen(false)
+	})
 
 	useEffect(() => {
 		if (open) {
@@ -80,13 +71,7 @@ export default function Settings() {
 								</span>
 							</li>
 							<li className={styles.item} role='none'>
-								<button
-									role='menuitem'
-									onClick={handleLogout}
-									className={btn.btnLogout}
-								>
-									{copyPath.logout}
-								</button>
+								<LogoutButton role='menuitem' cssClass={btn.btnLogout} />
 							</li>
 						</>
 					)}
