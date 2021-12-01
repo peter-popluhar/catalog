@@ -42,7 +42,7 @@ describe('test db CRUD operation', () => {
 
 	afterAll(async () => {
 		await connection.close()
-		await db.close()
+		// await db.close()
 	})
 
 	it('should create a doc in collection', async () => {
