@@ -2,7 +2,7 @@
 
 Catalog is a POC web app, for administration of products, based on Next.js and GQL server.
 
-There is also newer version of GQL Apollo Serve/Client [version](https://github.com/peter-popluhar/catalog-gql-apollo-server-client).
+There is also newer version of GQL Apollo Server/Client [Catalog](https://github.com/peter-popluhar/catalog-gql-apollo-server-client).
 
 Exist in two languages:
 - Primary - English
