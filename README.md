@@ -1,4 +1,4 @@
-# Catalog (REST version)
+# Catalog (REST API version)
 
 Catalog is a POC web app, for administration of products, based on Next.js and GQL server.
 
